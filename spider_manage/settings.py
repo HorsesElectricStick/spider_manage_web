@@ -120,5 +120,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-SESSION_SAVE_EVERY_REQUEST = False
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_SAVE_EVERY_REQUEST = False # 是否每次请求都保存Session，默认False
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True # 是否关闭浏览器使得Session过期，默认Flase
+SESSION_COOKIE_AGE = 86400 # Session的cookie失效日期数字为秒数），默认2周
