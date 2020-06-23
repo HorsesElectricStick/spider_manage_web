@@ -7,8 +7,25 @@ body {
     background: #131213;
 }
 
-input {
+input{
+    outline: none;
+    font-size: 20px;
+    border-radius: 50px;
+    position: absolute;
+    left: 50%;
+    top: 200px;
+    transform: translate(-50%,-50%);
+    height: 35px;
+    width: 200px;
     text-align: center;
+    transition: width 0.3s;
+}
+input:nth-child(2) {
+    top: 280px;
+}
+
+input:focus {
+    width: 300px;
 }
 
 #get_captcha {
