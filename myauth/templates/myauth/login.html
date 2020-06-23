@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myauth/css/index.css' %}"/>
+    <script>
+        function keyLogin() {
+            if (event.keyCode == 13){
+                login.click()
+            }
+        }
+    </script>
+</head>
+<body onkeydown="keyLogin()">
+    <p style="color: white">
+    {{ 错误 }}
+    </p>
+    {% if user.is_authenticated %}
+        <script>
+            window.location.href="{% url 'myauth:主页' %}";
+        </script>
+    {% else %}
+        <h1 style="color: white">你好，请登录</h1>
+    {% endif %}
+    <form name="login_form" action="" method="POST">
+        {% csrf_token %}
+        <label>
+            <input type="text" name="用户名" placeholder="用户名" value="{{ username }}"/>
+            <input type="password" name="密码" placeholder="密码"/>
+            <a id="login" href="javascript:document.login_form.submit();">登录</a>
+        </label>
+    </form>
+    <a id="get_captcha" href="javascript:">验证码</a>
+</body>
+</html>

@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #131213;
+}
+
+input {
+    text-align: center;
+}
+
+#get_captcha {
+    text-decoration: none;
+    position: absolute;
+    left: 60%;
+    top: 350px;
+    transform: translate(-50%,0);
+    font-size: 20px;
+    background: #131213;
+    background-size: 300%;
+    width: 150px;
+    height: 35px;
+    color: white;
+    text-align: center;
+    line-height: 35px;
+    border: 2px solid #2ecc71;
+    transition: background-color 0.3s;
+    border-radius: 50px;
+    letter-spacing: 5px;
+    z-index: 1;
+}
+
+#login {
+    text-decoration: none;
+    position: absolute;
+    left: 50%;
+    top: 500px;
+    transform: translate(-50%,-50%);
+    font-size: 24px;
+    background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 300%;
+    width: 300px;
+    height: 70px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    border-radius: 50px;
+    letter-spacing: 10px;
+    z-index: 1;
+}
+
+#login::before{
+    content: '';
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    top: -5px;
+    bottom: -5px;
+    background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 300%;
+    border-radius: 50px;
+    filter: blur(50px);
+    z-index: -1;
+}
+
+#get_captcha:hover {
+    background: #2ecc71;
+}
+
+#login:hover:before{
+    animation: sunshine 8s linear infinite;
+}
+
+#login:hover{
+    animation: sunshine 8s linear infinite;
+}
+
+@keyframes sunshine {
+    100%{
+        background-position: -300% 0;
+    }
+}
