@@ -76,8 +76,11 @@ WSGI_APPLICATION = 'spider_manage.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'host': 'localhost',
+        'NAME': 'djangoDB',
+        'USER': 'root',
+        'PASSWORD': 'sseawayss',
     }
 }
 
@@ -106,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -119,3 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SESSION_SAVE_EVERY_REQUEST = False # 是否每次请求都保存Session，默认False
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True # 是否关闭浏览器使得Session过期，默认Flase
+SESSION_COOKIE_AGE = 86400 # Session的cookie失效日期数字为秒数），默认2周

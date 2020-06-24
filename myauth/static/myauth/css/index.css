@@ -2,21 +2,51 @@
     margin: 0;
     padding: 0;
 }
+input.invalid:-ms-input-placeholder{
+    color: red;
+}
+input.invalid::-webkit-input-placeholder {
+    color: red;
+}
 
 body {
     background: #131213;
 }
 
-input {
+input{
+    outline: none;
+    font-size: 20px;
+    border-radius: 50px;
+    position: absolute;
+    left: 50%;
+    top: 200px;
+    transform: translate(-50%,-50%);
+    height: 35px;
+    width: 200px;
     text-align: center;
+    transition: width 0.3s;
+}
+input:nth-child(2) {
+    top: 280px;
+}
+input:nth-child(3) {
+    width: 150px;
+    top: 360px;
+}
+
+input:focus {
+    width: 300px;
+}
+input:nth-child(3):focus {
+    width: 200px;
 }
 
 #get_captcha {
     text-decoration: none;
     position: absolute;
-    left: 60%;
-    top: 350px;
-    transform: translate(-50%,0);
+    left: 62%;
+    top: 360px;
+    transform: translate(-50%,-50%);
     font-size: 20px;
     background: #131213;
     background-size: 300%;
@@ -28,7 +58,7 @@ input {
     border: 2px solid #2ecc71;
     transition: background-color 0.3s;
     border-radius: 50px;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
     z-index: 1;
 }
 
