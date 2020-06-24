@@ -11,6 +11,17 @@
                 login.click()
             }
         }
+        function form_check() {
+            if (document.getElementsByName("用户名")[0].value.length==0){
+                alert('用户名不能为空');
+            } else if (document.getElementsByName("密码")[0].value.length==0){
+                alert('密码不能为空');
+            } else if (document.getElementsByName("验证码")[0].value.length==0){
+                alert('验证码不能为空');
+            } else {
+                document.login_form.submit();
+            }
+        }
     </script>
 </head>
 <body onkeydown="keyLogin()">
@@ -29,9 +40,16 @@
         <label>
             <input type="text" name="用户名" placeholder="用户名" value="{{ username }}"/>
             <input type="password" name="密码" placeholder="密码"/>
-            <a id="get_captcha" href="javascript:">验证码</a>
-            <a id="login" href="javascript:document.login_form.submit();">登录</a>
+            <input id="sdsdsd" type="text" name="验证码" placeholder="验证码"/>
+            <a id="get_captcha" href="javascript:">发送验证码</a>
+            <a id="login" href="javascript:form_check()">登录</a>
         </label>
     </form>
 </body>
+{% ifequal 错误 "验证码错误!" %}
+<script>
+    document.getElementsByName("验证码")[0].setAttribute('placeholder', "{{ 错误 }}");
+    document.getElementsByName("验证码")[0].setAttribute("class","invalid")
+</script>
+{% endifequal %}
 </html>

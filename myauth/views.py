@@ -5,6 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 
 def 登录(request, info=None):
     if request.method == 'POST':
+        if request.POST['验证码'] != '123123':
+            return render(request, 'myauth/login.html', {'错误': '验证码错误!', 'username': request.POST['用户名']})
         user = authenticate(request, username=request.POST['用户名'], password=request.POST['密码'])
         if user is None:
             return render(request, 'myauth/login.html', {'错误': '用户名/密码错误!', 'username': request.POST['用户名']})
