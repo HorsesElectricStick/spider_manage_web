@@ -79,6 +79,7 @@ input:nth-child(3):focus {
     border-radius: 50px;
     letter-spacing: 10px;
     z-index: 1;
+    animation: sunshine 8s linear infinite;
 }
 
 #login::before{
@@ -93,18 +94,11 @@ input:nth-child(3):focus {
     border-radius: 50px;
     filter: blur(50px);
     z-index: -1;
+    animation: sunshine 8s linear infinite;
 }
 
 #get_captcha:hover {
     background: #2ecc71;
-}
-
-#login:hover:before{
-    animation: sunshine 8s linear infinite;
-}
-
-#login:hover{
-    animation: sunshine 8s linear infinite;
 }
 
 @keyframes sunshine {
