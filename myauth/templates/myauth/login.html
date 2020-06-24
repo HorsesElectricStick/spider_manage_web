@@ -32,8 +32,6 @@
         <script>
             window.location.href="{% url 'myauth:主页' %}";
         </script>
-    {% else %}
-        <h1 style="color: white">你好，请登录</h1>
     {% endif %}
     <form name="login_form" action="" method="POST">
         {% csrf_token %}
@@ -41,7 +39,13 @@
             <input type="text" name="用户名" placeholder="用户名" value="{{ username }}"/>
             <input type="password" name="密码" placeholder="密码"/>
             <input type="text" name="验证码" placeholder="验证码"/>
-            <a id="get_captcha" href="javascript:">发送验证码</a>
+            <a id="get_captcha" href="javascript:">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                发送验证码
+            </a>
             <a id="login" href="javascript:form_check()">登录</a>
         </label>
     </form>
