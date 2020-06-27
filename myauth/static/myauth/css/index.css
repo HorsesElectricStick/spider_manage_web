@@ -60,7 +60,7 @@ input:nth-child(3):focus {
     transition: 0.2s;
 
 }
-#get_captcha:active {
+#get_captcha:hover {
     color: #131213;
     background: #2ecc71;
     box-shadow: 0 0 10px #2ecc71,0 0 40px #2ecc71,0 0 80px #2ecc71;
