@@ -48,7 +48,7 @@ input:nth-child(3):focus {
     text-decoration: none;
     position: relative;
     display: inline-block;
-    left: 65%;
+    left: calc(50% + 230px);
     top: 340px;
     transform: translate(-50%,-50%);
     padding: 15px 30px;
