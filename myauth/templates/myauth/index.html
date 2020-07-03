@@ -6,7 +6,7 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-        你好，{{ user.username }}
+        你好，{{ user.username }}, {{ user.id }}
         <br/>
         <a href="{% url 'myauth:退出' %}">退出登录</a>
     {% else %}

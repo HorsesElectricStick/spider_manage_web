@@ -4,25 +4,9 @@
     <meta charset="UTF-8">
     <title>登录</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'myauth/css/index.css' %}"/>
-    <script>
-        function keyLogin() {
-            if (event.keyCode == 13){
-                login.click()
-            }
-        }
-        function form_check() {
-            if (document.getElementsByName("用户名")[0].value.length==0){
-                alert('用户名不能为空');
-            } else if (document.getElementsByName("密码")[0].value.length==0){
-                alert('密码不能为空');
-            } else if (document.getElementsByName("验证码")[0].value.length==0){
-                alert('验证码不能为空');
-            } else {
-                document.login_form.submit();
-            }
-        }
-    </script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myauth/css/login.css' %}"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'myauth/js/login.js' %}"></script>
 </head>
 <body onkeydown="keyLogin()">
     <p style="color: white">
@@ -36,7 +20,7 @@
     <form name="login_form" action="" method="POST">
         {% csrf_token %}
         <label>
-            <input type="text" name="用户名" placeholder="用户名" value="{{ username }}"/>
+            <input type="text" name="用户名" placeholder="用户名" value="{{ username }}" id="account"/>
             <input type="password" name="密码" placeholder="密码"/>
             <input type="text" name="验证码" placeholder="验证码"/>
             <a id="get_captcha" href="javascript:">
@@ -50,10 +34,27 @@
         </label>
     </form>
 </body>
-{% ifequal 错误 "验证码错误!" %}
+{% if "验证码" in 错误 %}
 <script>
     document.getElementsByName("验证码")[0].setAttribute('placeholder', "{{ 错误 }}");
     document.getElementsByName("验证码")[0].setAttribute("class","invalid")
 </script>
-{% endifequal %}
+{% endif %}
+<script>
+    $.ajaxSetup({
+        data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+    });
+    $("#get_captcha").on('click', function () {
+        if (document.getElementsByName("用户名")[0].value.length==0){
+            alert('用户名不能为空');
+        } else {
+            $.ajax({
+                url: "{% url 'weixin_catpcha:获取验证码' %}",
+                type: "POST",
+                dataType: "json",
+                data: {"用户名": $("#account").val(),}
+            })
+        }
+    });
+</script>
 </html>
