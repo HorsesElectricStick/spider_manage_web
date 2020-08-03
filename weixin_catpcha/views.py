@@ -5,6 +5,7 @@ import random
 from django.contrib.auth.models import User
 from weixin_catpcha.models import *
 
+
 # Create your views here.
 
 def 获取验证码(request):
@@ -28,16 +29,18 @@ def 获取验证码(request):
                 'template_id': 'jJb7wK-6r8g0PKyFgy2VILeD3Hdr8mS1R6bF48odzDU',
                 'data': {'code': {'value': captcha_number, 'color': '#173177'}}
             }
-            requests.post("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(token),json=data)
+            requests.post("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(token),
+                          json=data)
             captcha.objects.filter(username_id=user_id).update(captcha=captcha_number, captcha_time=datetime.now())
             return HttpResponse('验证码发送成功')
     return HttpResponse('验证码发送失败')
+
 
 def 刷新token(nodata=None):
     params = API_params.objects.all()[0]
     token_res = requests.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='
                              '{}&secret={}'.format(params.app_id, params.secret))
-    token = token_res.json()['access_token']
+    token: str = token_res.json()['access_token']
     if nodata:
         captcha_API.objects.create(token=token, token_time=datetime.now())
     else:
