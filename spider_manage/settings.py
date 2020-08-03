@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myauth',
-    'weixin_catpcha'
+    'myauth.apps.MyauthConfig',
+    'weixin_catpcha.apps.WeixinCatpchaConfig'
 ]
 
 MIDDLEWARE = [
